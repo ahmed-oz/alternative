@@ -6,5 +6,7 @@ images/*
 /oldMysql
 /jui
 /_html2pdf
+/html2pdf
 /bootstrap
 /css
+.idea/*
