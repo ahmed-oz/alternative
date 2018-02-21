@@ -332,7 +332,7 @@ span.price-customer {
                 </div>
 				<!-- End Dettagli auto -->
 				<?
-				if(trim($blocco_dati['data_blocco_inizio'])!='' && trim($blocco_dati['data_blocco_inizio'])!='0000-00-00 00:00:00') {
+				if(trim($blocco_dati['data_blocco_inizio'])!='' && trim($blocco_dati['data_blocco_inizio'])!='0000-00-00 00:00:00' ) {
 				?>				
 				<div class="mws-panel grid_4 mws-collapsible">
                 	<div class="mws-panel-header">
@@ -346,6 +346,7 @@ span.price-customer {
                             $sql = "SELECT concessionari_auto.* , concessionari.nome_concessionaria, concessionari.tipo FROM concessionari_auto INNER JOIN concessionari ON concessionari_auto.id_concessionari = concessionari.id_concessionaria WHERE id_auto = ".$id_auto." LIMIT 0,1";
                             $rowB = mysqli_query($conn, $sql);
                             $blocco_dati = mysqli_fetch_array($rowB, MYSQLI_ASSOC);
+
                             ?>
 							<tr>
 								<td>
@@ -361,7 +362,11 @@ span.price-customer {
 							</tr>
 							<tr>
 								<td>Data blocco</td>
-								<td><?=date('d/m/Y H:i', strtotime($blocco_dati['data_blocco_inizio']));?></td>
+								<td><?php
+                                    if ($blocco_dati['data_blocco_inizio'] != null) {
+                                        echo date('d/m/Y H:i', strtotime($blocco_dati['data_blocco_inizio']));
+                                    }
+                                        ?></td>
 							</tr>
 							<tr>
 								<td>Note</td>
