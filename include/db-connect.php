@@ -8,11 +8,11 @@
 error_reporting(-1);
 date_default_timezone_set('Europe/Rome');
 ob_start();
-$db = 'bpmjqedmtx';
-$host = '174.138.11.50';
+$db = 'alternative';
+$host = 'localhost';
 /* Modificato da Gianluca - 20170111 */
-$username = 'bpmjqedmtx';
-$password = '96DEGudhh2';
+$username = 'root';
+$password = '';
 if (!($conn = @(count($t_yakpro_mtm_tmp = explode(':', $host)) > 1 ? mysqli_connect($t_yakpro_mtm_tmp[0], $username, $password, '', $t_yakpro_mtm_tmp[1]) : mysqli_connect($host, $username, $password)))) {
     echo 'Impossibile connettersi a MySql<br>';
     echo mysqli_errno($conn) . ': ' . mysqli_error($conn) . '

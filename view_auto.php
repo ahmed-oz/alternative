@@ -342,6 +342,11 @@ span.price-customer {
 						<div class="mws-panel-body no-padding">
                         <table class="mws-table">
                             <tbody>
+                            <?php
+                            $sql = "SELECT concessionari_auto.* , concessionari.nome_concessionaria, concessionari.tipo FROM concessionari_auto INNER JOIN concessionari ON concessionari_auto.id_concessionari = concessionari.id_concessionaria WHERE id_auto = ".$id_auto." LIMIT 0,1";
+                            $rowB = mysqli_query($conn, $sql);
+                            $blocco_dati = mysqli_fetch_array($rowB, MYSQLI_ASSOC);
+                            ?>
 							<tr>
 								<td>
 									<?php /* Modificato da Gianluca - 20170117 */ ?>
@@ -356,7 +361,7 @@ span.price-customer {
 							</tr>
 							<tr>
 								<td>Data blocco</td>
-								<td><?=date('d/m/Y H:i',strtotime($blocco_dati['data_blocco_inizio']));?></td>
+								<td><?=date('d/m/Y H:i', strtotime($blocco_dati['data_blocco_inizio']));?></td>
 							</tr>
 							<tr>
 								<td>Note</td>
